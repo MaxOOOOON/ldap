@@ -1,0 +1,36 @@
+---
+  - name: Install IPA client package
+    package:
+      name: freeipa-client
+      state: present
+
+
+
+  - name: add ipa-server as nameserver
+    copy: 
+      src: resolv.conf 
+      dest: /etc/resolv.conf 
+      owner: root 
+      group: root 
+      mode: 0644
+      
+
+
+  - name: configure ipa-client
+    command: |
+      ipa-client-install -U \
+      --principal admin@OTUS.LOCAL \
+      --password PASSWORD \
+      --server ipa-server.otus.local \
+      --domain otus.local \
+      --realm OTUS.LOCAL \
+      --mkhomedir \
+      --force-join
+    ignore_errors: true
+
+
+  - name: firewalld start
+    systemd:
+      name: firewalld
+      state: started
+      enabled: yes

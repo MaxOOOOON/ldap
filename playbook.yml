@@ -1,0 +1,12 @@
+---
+- hosts: ipaserver
+  name: Setup ipaserver
+  become: yes
+  roles:
+    - role: ipaserver
+
+- hosts: ipaclient
+  name: Setup ipaclient
+  become: yes
+  roles:
+    - role: ipaclient
