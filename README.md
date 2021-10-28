@@ -23,7 +23,7 @@ ipa-client-install - Подключение хоста к домену
 
     ssh -i ssh-key/id_rsa user@localhost -p 2200
 
-![]()
+![](https://github.com/MaxOOOOON/ldap/blob/main/pictures/Screenshot_20211025_011114.png)    
 
 
 
