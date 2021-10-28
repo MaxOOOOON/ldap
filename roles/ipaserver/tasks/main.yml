@@ -22,13 +22,10 @@
     state: started
     enabled: yes
   
-- name: add google dns to resolv.conf
-  lineinfile:
-    dest: /etc/resolv.conf
-    line: "{{ item }}"
-  with_items:
-      - nameserver 8.8.8.8
-      - nameserver 8.8.4.4
+- name: copy resolv.conf
+  copy: 
+    src: resolv.conf 
+    dest: /etc/resolv.conf 
 
   
 - name: copy server hosts file
